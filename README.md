@@ -5,7 +5,6 @@
 ## 푼 문제 목록 
 <details markdown="1">
 <summary>3월</summary>
-#### 백준
 2228 구간 나누기
 </details>
 
