@@ -3,14 +3,15 @@
 - 문제 번호, solved.ac 기준 문제 티어 기록하기
 
 ## 푼 문제 목록 
+
 <details>
-<summary>3월</summary>
+<summary>접기/펼치기 버튼</summary>
 <div markdown="1">
-  
-|번호|티어|제목|
-|--|--|3|
-|1|1|3|
-|2|10|3|
+
+|제목|내용|
+|--|--|
+|1|1|
+|2|10|
 
 </div>
 </details>
