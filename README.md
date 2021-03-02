@@ -5,7 +5,7 @@
 ## 푼 문제 목록 
 
 <details>
-<summary>3월 1</summary>
+<summary>3월 1주차</summary>
 <div markdown="1">
 
 |번호|티어|제목|
