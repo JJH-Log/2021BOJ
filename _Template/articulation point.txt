@@ -1,0 +1,33 @@
+
+vector<vector<int>> w;
+vector<int> dn;
+vector<bool> isCut;
+vector<int> result;
+int dfsn;
+
+//인접행렬 w를 바탕
+int dfsCut(int now, int parent, bool isRoot) {
+    /*============================================
+    vector<vector<int>> w : adj graph (init with size : N)
+    vector<int> dn : check for dfsn (init with size : N)
+    vector<bool> isCut : check for Articulation Point (init with size : N, value : false)
+    int dfsn : dfs number (init with value : 0)
+    ============================================*/
+    int next, child, ans, FLAG;
+    dn[now] = ++dfsn;
+    FLAG = dn[now];
+    child = 0;
+    for (int i = 0; i < w[now].size(); i++) {
+        next = w[now][i];
+        if (parent == next) continue;
+        if (dn[next]) FLAG = min(FLAG, dn[next]);
+        else {
+            child++;
+            ans = dfsCut(next, now, false);
+            if (!isRoot && dn[now] <= ans) isCut[now] = true;
+            FLAG = min(FLAG, ans);
+        }
+    }
+    if (isRoot && child > 1) isCut[now] = true;
+    return FLAG;
+}

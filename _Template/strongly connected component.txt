@@ -1,0 +1,39 @@
+vector<vector<int>> w, g;
+vector<int> dn, dg;
+stack<int> s;
+int dfsn, dfsg;
+
+int dfsScc(int now) {
+    /*============================================
+    vector<vector<int>> w : adj graph (init with size : N)
+    vector<vector<int>> g : strongly connected component group
+    vector<int> dn : check for dfs number (init with value : 0)
+    vector<int> dg : check for dfs group (init with size : N, value : -1)
+    stack<int> s : for using Tarjan's algorithm 
+    int dfsn : dfs number (init with value : 0)
+    int dfsg : scc group (init with value : -1)
+    ============================================*/
+    int next,  FLAG;
+    dn[now] = ++dfsn;
+    FLAG = dn[now];
+    s.push(now);
+    for (int i = 0; i < w[now].size(); i++) {
+        int next = w[now][i];
+        if (dg[next] > -1) continue;
+        if (dn[next]) FLAG = min(FLAG, dn[next]);
+        else FLAG = min(FLAG, dfsScc(next));
+    }
+    if (FLAG == dn[now]) {
+        vector<int> _group;
+        dfsg++;
+        while (true) {
+            int t = s.top();
+            s.pop();
+            dg[t] = dfsg;
+            _group.push_back(t);
+            if (t == now) break;
+        }
+        g.push_back(_group);
+    }
+    return FLAG;
+}
