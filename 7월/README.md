@@ -143,6 +143,7 @@
 |1561|골드2|놀이 공원|
 
 </div>
+</details>
 
 <details>
 <summary>7월 5주차 [21문제]</summary>
@@ -166,3 +167,4 @@
 |4355|골드1|서로소|
 
 </div>
+</details>
