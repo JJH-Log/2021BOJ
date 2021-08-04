@@ -107,7 +107,7 @@
 </details>
 
 <details>
-<summary>7월 4주차 [21문제]</summary>
+<summary>7월 4주차 [21문제 / 유량, 단절점, 단절선]</summary>
 <div markdown="1">
   
 |번호|티어|제목|
@@ -146,7 +146,7 @@
 </details>
 
 <details>
-<summary>7월 5주차 [21문제]</summary>
+<summary>7월 5주차 [21문제 / HLD 알고리즘, 오일러 피 함수]</summary>
 <div markdown="1">
   
 |번호|티어|제목|
