@@ -1,4 +1,4 @@
-## 푼 문제 목록 [총 66문제]
+## 푼 문제 목록 [총 95문제]
 
 <details>
 <summary>8월 1주차 [23문제 / 선인장, lazy전파, 이분매칭]</summary>
@@ -70,7 +70,7 @@
 </details>
 
 <details>
-<summary>8월 2주차 [18문제]</summary>
+<summary>8월 3주차 [18문제]</summary>
 <div markdown="1">
   
 |번호|티어|제목|
@@ -98,7 +98,7 @@
 </details>
 
 <details>
-<summary>8월 2주차 [18문제 / Offline Dynamic Connectivity]</summary>
+<summary>8월 4주차 [22문제 / Offline Dynamic Connectivity]</summary>
 <div markdown="1">
   
 |번호|티어|제목|
@@ -119,6 +119,30 @@
 |15490|골드1|즐거운 게임|
 |12845|실버3|모두의 마블|
 |13139|플래3|Grid Forest|
+|14679|플래4|영우와 '갓4'|
+|2217|실버4|로프|
+|16887|다이아5|루트 님 게임|
+|6091|플래5|핑크 플로이드|
+|1917|골드1|정육면체 전개도|
+|17876|플래5|Foliding a Cube|
+
+</div>
+</details>
+
+
+<details>
+<summary>8월 5주차 [7문제]</summary>
+<div markdown="1">
+  
+|번호|티어|제목|
+|--|--|--|
+|9426|플래5|중앙값 측정|
+|9015|골드1|정사각형|
+|1912|실버2|연속합|
+|2193|실버3|이친수|
+|3827|플래5|일차원 세포 자동자|
+|2660|골드5|회장 뽑기|
+|21342|플래3|Flight Collision|
 
 </div>
 </details>
