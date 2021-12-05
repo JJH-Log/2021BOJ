@@ -13,12 +13,9 @@ int dfsScc(int now) {
     int dfsn : dfs number (init with value : 0)
     int dfsg : scc group (init with value : -1)
     ============================================*/
-    int next,  FLAG;
-    dn[now] = ++dfsn;
-    FLAG = dn[now];
+    int FLAG = dn[now] = ++dfsn;
     s.push(now);
-    for (int i = 0; i < w[now].size(); i++) {
-        int next = w[now][i];
+    for (auto &next : w[now]) {
         if (dg[next] > -1) continue;
         if (dn[next]) FLAG = min(FLAG, dn[next]);
         else FLAG = min(FLAG, dfsScc(next));
