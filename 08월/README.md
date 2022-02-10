@@ -1,7 +1,7 @@
-## 푼 문제 목록 [총 95문제]
+## 푼 문제 목록 [총 96문제]
 
 <details>
-<summary>8월 1주차 [23문제 / 선인장, lazy전파, 이분매칭]</summary>
+<summary>8월 1주차 [24문제 / 선인장, lazy전파, 이분매칭]</summary>
 <div markdown="1">
   
 |번호|티어|제목|

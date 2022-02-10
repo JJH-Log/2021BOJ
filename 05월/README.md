@@ -1,4 +1,4 @@
-## 푼 문제 목록 [총 130문제]
+## 푼 문제 목록 [총 129문제]
 
 <details>
 <summary>5월 1주차 [8문제]</summary>
@@ -104,7 +104,7 @@
 
 
 <details>
-<summary>5월 4주차 [27문제 / LIS, 비트마스킹]</summary>
+<summary>5월 4주차 [26문제 / LIS, 비트마스킹]</summary>
 <div markdown="1">
   
 |번호|티어|제목|

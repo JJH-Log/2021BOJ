@@ -1,4 +1,4 @@
-## 푼 문제 목록 [총 122문제]
+## 푼 문제 목록 [총 130문제]
 
 <details>
 <summary>7월 1주차 [16문제 / 정규표현식]</summary>
@@ -107,7 +107,7 @@
 </details>
 
 <details>
-<summary>7월 4주차 [21문제 / 유량, 단절점, 단절선]</summary>
+<summary>7월 4주차 [29문제 / 유량, 단절점, 단절선]</summary>
 <div markdown="1">
   
 |번호|티어|제목|
