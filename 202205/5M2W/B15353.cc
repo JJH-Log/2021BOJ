@@ -1,0 +1,55 @@
+#define _CRT_SECURE_NO_WARNINGS
+#define _USE_MATH_DEFINES
+#include <iostream>
+#include <vector>
+#include <string>
+#include <map>
+#include <queue>
+#include <stack>
+#include <utility>
+#include <algorithm>
+#include <cstring>
+#include <string.h>
+#include <math.h>
+#include <set>
+#include <cassert>
+#include <bitset>
+#include <sstream>
+#include <cmath>
+#include <random>
+#include <numeric>
+#include <regex>
+#define MOD 1000000000
+#define BOUND 1000000000
+#define MININT -2147483647
+#define MAXINT 2147483647
+#define MAXN 1000001
+using namespace std;
+using lld = long long;
+using pii = pair<int, int>;
+using pll = pair<lld, lld>;
+
+string A, B, res;
+int v[10001], last;
+
+int main() {
+	ios::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL);
+
+	cin >> A >> B;
+	reverse(A.begin(), A.end());
+	reverse(B.begin(), B.end());
+	for (int i = 0; i < A.size(); i++) v[i] += A[i] - '0';
+	for (int i = 0; i < B.size(); i++) v[i] += B[i] - '0';
+	for (int i = 0; i <= 10000; i++) {
+		if (v[i] >= 10) {
+			v[i + 1]++;
+			v[i] %= 10;
+		}
+		if (v[i]) last = i;
+	}
+	for (int i = 0; i <= last; i++) res += '0' + v[i];
+	reverse(res.begin(), res.end());
+	cout << res;
+
+	return 0;
+}

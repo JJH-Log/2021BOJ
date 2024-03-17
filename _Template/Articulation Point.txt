@@ -1,0 +1,33 @@
+/*============================================
+Implementation of Articulation Point
+Author : ReneCantata
+Date : 2022-03-16
+
+Description
+간선을 표현한 벡터 w를 바탕으로 생성된 그래프에서 각 정점이 단절점인지를 isCut 배열에 저장
+vector<int> w[MAXN] : Graph edges
+int dfsn : dfs number (init : 0)
+int dn[MAXN] : Check for dfsn (init : 0)
+bool isCut[MAXN] : Check for Articulation Point (init : false)
+============================================*/
+
+vector<int> w[MAXN];
+int dfsn, dn[MAXN];
+bool isCut[MAXN];
+
+int dfsCut(int now, int parent, bool isRoot) {
+	int FLAG = dn[now] = ++dfsn;
+	int child = 0;
+	for (auto next : w[now]) {
+		if (parent == next) continue;
+		if (dn[next]) FLAG = min(FLAG, dn[next]);
+		else {
+			child++;
+			int ans = dfsCut(next, now, false);
+			if (!isRoot && dn[now] <= ans) isCut[now] = true;
+			FLAG = min(FLAG, ans);
+		}
+	}
+	if (isRoot && child > 1) isCut[now] = true;
+	return FLAG;
+}

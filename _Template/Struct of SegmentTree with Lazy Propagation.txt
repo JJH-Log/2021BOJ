@@ -1,0 +1,45 @@
+struct segNode {
+	lld val, lazy;
+	segNode* left, * right;
+
+	segNode(int l, int r) :val(0), lazy(0) {
+		if (l != r) {
+			int mid = (l + r) / 2;
+			left = new segNode(l, mid);
+			right = new segNode(mid + 1, r);
+		}
+	}
+
+	void update_range(int l, int r, int s, int e, lld key) {
+		if (s > r || l > e) return;
+		if (s <= l && r <= e) {
+			val += ((lld)r - l + 1) * key;
+			if (l != r) lazy += key;
+		}
+		else {
+			int mid = (l + r) / 2;
+			if (lazy) {
+				left->update_range(l, mid, l, mid, lazy);
+				right->update_range(mid + 1, r, mid + 1, r, lazy);
+				lazy = 0;
+			}
+			left->update_range(l, mid, s, e, key);
+			right->update_range(mid + 1, r, s, e, key);
+			val = left->val + right->val;
+		}
+	}
+
+	lld query(int l, int r, int s, int e) {
+		if (s > r || l > e) return 0;
+		if (s <= l && r <= e) return val;
+		else {
+			int mid = (l + r) / 2;
+			if (lazy) {
+				left->update_range(l, mid, l, mid, lazy);
+				right->update_range(mid + 1, r, mid + 1, r, lazy);
+				lazy = 0;
+			}
+			return left->query(l, mid, s, e) + right->query(mid + 1, r, s, e);
+		}
+	}
+};

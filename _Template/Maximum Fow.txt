@@ -1,0 +1,52 @@
+/*============================================
+Implementation of Network Flow
+Author : ReneCantata
+Date : 2022-03-16
+
+Description
+간선을 표현한 벡터 w와 간선의 유량 nc를 바탕 최대 유량을 계산
+vector<int> w[MAXN] : Graph edges
+int nc[MAXN][MAXN] : Value for i-j Capacity
+int nf[MAXN][MAXN] : Value for i-j Flow
+vector<int> par : Keep X's parent to trace (init : -1)
+int S, E : Start, End Point
+============================================*/
+
+vector<int> w[MAXN];
+int nc[MAXN][MAXN], nf[MAXN][MAXN];
+int par[MAXN];
+int S, E;
+
+void doFlow() {
+    int now, next;
+    queue<int> _q;
+    _q.push(S);
+    while (!_q.empty()) {
+        now = _q.front(); _q.pop();
+        for (auto next : w[now]) {
+            if (nc[now][next] - nf[now][next] > 0 && par[next] == -1) {
+                _q.push(next);
+                par[next] = now;
+                if (next == E) return;
+            }
+        }
+    }
+    return;
+}
+
+int networkFlow() {
+    int ans = 0;
+    while (true) {
+        memset(par, -1, sizeof par);
+        doFlow();
+        if (par[E] == -1) break;
+        int flow = 1e9;
+        for (int now = E; now != S; now = par[now]) flow = min(flow, nc[par[now]][now] - nf[par[now]][now]);
+        for (int now = E; now != S; now = par[now]) {
+            nf[par[now]][now] += flow;
+            nf[now][par[now]] -= flow;
+        }
+        ans += flow;
+    }
+    return ans;
+}

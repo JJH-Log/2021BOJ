@@ -1,0 +1,42 @@
+/*============================================
+Implementation of Strongly Connected Component
+Author : ReneCantata
+Date : 2022-03-16
+
+Description
+간선을 표현한 벡터 w를 바탕으로 생성된 그래프에서의 SCC를 g에 그룹별로 저장
+vector<int> w[MAXN] : Graph edges
+vector<vector<int>> g : SCC group *(First, g.push_back(vector<int>()) to using one-based group)
+stack<int> st : stack for making SCC
+int dfsn : dfs number (init : 0)
+int dn[MAXN] : Check for dfs number (init : 0)
+int dg[MAXN] : Check for dfs group (init : 0)
+============================================*/
+
+vector<int> w[MAXN];
+vector<vector<int>> g;
+stack<int> st;
+int dfsn, dn[MAXN], dg[MAXN];
+
+int SCC(int now) {
+	int FLAG = dn[now] = ++dfsn;
+	st.push(now);
+	for (auto& next : w[now]) {
+		if (dg[next]) continue;
+		if (dn[next]) FLAG = min(FLAG, dn[next]);
+		else FLAG = min(FLAG, SCC(next));
+	}
+	if (FLAG == dn[now]) {
+		vector<int> tmp;
+		int gnum = g.size();
+		while (true) {
+			int t = st.top();
+			st.pop();
+			dg[t] = gnum;
+			tmp.push_back(t);
+			if (t == now) break;
+		}
+		g.push_back(tmp);
+	}
+	return FLAG;
+}

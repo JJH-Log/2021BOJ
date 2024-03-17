@@ -1,0 +1,48 @@
+/*============================================
+Implementation of LCP & Suffix Array
+Author : ReneCantata
+Date : 2022-03-16
+
+Description
+문자열의 Suffix Array 와 LCP Array 값을 추출함 (LCP[0] = -1)
+string s : Target string (or char s[MAXN])
+int sz : Size of s (init : string -> s.size(), char -> strlen(s))
+int gt : Gap while constructing suffix array
+int SA[MAXN] : Suffix array
+int g[MAXN] : Group number
+int tg[MAXN] : Temporarily saved group number
+int LCP[MAXN] : LCP array
+============================================*/
+
+string s;
+int sz, gt, SA[MAXN], g[MAXN], tg[MAXN], LCP[MAXN];
+
+bool cmp_sa(int x, int y) {
+	if (g[x] != g[y]) return g[x] < g[y];
+	int xi = x + gt < sz ? g[x + gt] : -1;
+	int yi = y + gt < sz ? g[y + gt] : -1;
+	return xi < yi;
+}
+
+void Suffix_LCP() {
+	//Get Suffix Array
+	for (int i = 0; i < sz; i++) {
+		SA[i] = i;
+		g[i] = s[i];
+	}
+	for (gt = 1; gt <= sz; gt <<= 1) {
+		sort(SA, SA + sz, cmp_sa);
+		tg[SA[0]] = 0;
+		for (int i = 1; i < sz; i++) tg[SA[i]] = tg[SA[i - 1]] + cmp_sa(SA[i - 1], SA[i]);
+		for (int i = 0; i < sz; i++) g[i] = tg[i];
+	}
+	//Get LCP Array
+	int len = 0;
+	LCP[0] = -1;
+	for (int i = 0; i < sz; i++) {
+		if (g[i] == 0) continue;
+		while ((i + len < sz) && (SA[g[i] - 1] + len < sz) && s[i + len] == s[SA[g[i] - 1] + len]) len++;
+		LCP[g[i]] = len;
+		if (len) len--;
+	}
+}
